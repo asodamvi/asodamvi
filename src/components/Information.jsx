@@ -26,8 +26,7 @@ const Informacion = () => (
                     de la estafa que sufrieron cientos de familias caucanas.
                 </div>
                 <div className="objetivos__item">
-                    Comprar un predio para la construcción de un proyecto de vivienda 
-                    para las personas que hacen parte de la asociación.
+                    Urbanizar el lote propiedad de la asociación para entregarselo a sus asociados
                 </div>
                 <div className="objetivos__item">
                     Gestionar y construir su propio proyecto de vivienda.

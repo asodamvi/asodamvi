@@ -29,6 +29,9 @@
     box-shadow: var(--box-shadow-inset);
     font-size: var(--font-size-small);
     margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media only screen and (min-width: 768px) {

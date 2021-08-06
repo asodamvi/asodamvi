@@ -111,6 +111,7 @@ table .td__options_delete {
 .finalizar__encuesta_footer {
     display: flex;
     justify-content: center;
+    margin-bottom: 1em;
 }
 
 .btn__delete_component {

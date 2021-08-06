@@ -11,6 +11,7 @@ import "../assets/css/ingresar.css"
 const Ingresar = () => {
     const [email, setEmail]         = useState('');
     const [password, setPassword]   = useState('');
+    const [message, setMessage]     = useState('');
     const { ingresar } = useAuth();
     const history = useHistory();
 
@@ -20,7 +21,24 @@ const Ingresar = () => {
         await ingresar(email, password).then(() => {
             history.push("/dashboard");
         }).catch(error => {
-            console.error(error);
+            let message = ''
+
+            switch(error.code) {
+                case "auth/wrong-password":
+                    message="La contraseña ingresada es incorrecta."
+                    break;
+                case "auth/user-not-found":
+                    message="El usuario ingresado no se encuentra registrado en ASODAMVI"
+                    break;
+                case "auth/too-many-requests":
+                    message="El acceso a esta cuenta se ha deshabilitado temporalmente por demaciados intentos incorrectos."
+                    break;
+                default: 
+                    message="Ups. Ocurrio un error."
+                    break;
+            }
+
+            setMessage(message);
         });
     }
 
@@ -59,6 +77,14 @@ const Ingresar = () => {
                         <NavLink to="/restaurar-contrasena" className="form__login_link">
                             ¿Olvidó su contraseña?
                         </NavLink>
+
+                        {
+                            message && (
+                                <div className="form__message">
+                                    <p>{ message }</p>
+                                </div>
+                            )
+                        }
                     </form>
                 </div>
             </div>

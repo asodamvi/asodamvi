@@ -10,18 +10,24 @@ const OpcionesPregunta = (props) => {
     const [opciones, setOpciones] = useState([]);
     const [respuesta, setRespuesta] = useState(null);
     const [disabled, setDisabled] = useState(false);
+    const [loader, setLoader] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
-            await firestore.collection("opciones").where("pregunta", "==", pregunta).orderBy("create").onSnapshot((querySnapshot) => {
-                let datos = [];
+            try {
+                await firestore.collection("opciones").where("pregunta", "==", pregunta).orderBy("create").onSnapshot((querySnapshot) => {
+                    let datos = [];
 
-                querySnapshot.forEach((doc) => {
-                    datos.push({ id: doc.id, ...doc.data() });
+                    querySnapshot.forEach((doc) => {
+                        datos.push({ id: doc.id, ...doc.data() });
+                    });
+
+                    setOpciones(datos);
+                    setLoader(false)
                 });
-
-                setOpciones(datos);
-            });
+            } catch (error) {
+                console.warn("Opciones Preguntas - Error:", error);
+            }
         }
 
         fetchData();
@@ -32,8 +38,9 @@ const OpcionesPregunta = (props) => {
     }, [])
 
     const handleRespuesta = () => {
-        if(respuesta) {
+        if (respuesta) {
             setDisabled(true);
+
             props.saveRespuesta({
                 opcion: respuesta,
                 pregunta: pregunta
@@ -53,6 +60,8 @@ const OpcionesPregunta = (props) => {
 
     return (
         <div>
+            { loader && <div className="loader"></div> }
+
             {
                 opciones?.map((doc, index) => (
                     <div key={index}>
@@ -67,12 +76,11 @@ const OpcionesPregunta = (props) => {
                             )}
 
                             {(role === "asociado") && (
-                                <button className="opcion__button" onClick={() => setRespuesta(doc.id)}>
+                                <button className="opcion__button" onClick={() => setRespuesta(doc.id)} disabled={disabled}>
                                     <span>{index + 1}. </span> {doc.titulo}
                                 </button>
                             )}
                         </div>
-
                     </div>
                 ))
             }

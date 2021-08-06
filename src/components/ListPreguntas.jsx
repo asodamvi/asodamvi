@@ -11,10 +11,12 @@ const ListPreguntas = (props) => {
     const { validateRole, currentUser } = useAuth();
     const role = validateRole();
     const { encuesta } = props;
+
     const [preguntasList, setPreguntasList] = useState([]);
     const [showFormOpcion, setShowFormOpcion] = useState(false);
     const [preguntaId, setPreguntaId] = useState(null);
     const [respuestas, setRespuestas] = useState([]);
+    const [message, setMessage] = useState('');
 
     useEffect(() => {
         async function fetchData() {
@@ -59,11 +61,13 @@ const ListPreguntas = (props) => {
                         });
                     })
                 })
+
+                setMessage('');
             } catch (error) {
                 console.log(error)
             }
         } else {
-            console.log("Por favor responda todas las preguntas de la encuesta");
+            setMessage("Por favor responda todas las preguntas para finalizar la encuesta.")
         }
     }
 
@@ -104,6 +108,14 @@ const ListPreguntas = (props) => {
                             <button className="header__component_btn" onClick={finalizarEncuesta}>
                                 Finalizar Encuesta
                             </button>
+                        </div>
+                    )
+                }
+
+                {
+                    message && (
+                        <div className="form__message">
+                            <p>{ message }</p>
                         </div>
                     )
                 }
