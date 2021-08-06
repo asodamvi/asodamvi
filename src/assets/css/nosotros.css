@@ -1,0 +1,90 @@
+.section__nosotros {
+  padding: 2em 1em;
+  overflow: hidden;
+}
+
+.section__asociacion {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+.section__asociacion div:first-child{
+  margin-bottom: 2em;
+}
+
+.section__asociacion p {
+  text-align: justify;
+}
+
+.section__directivos_table{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2em;
+}
+
+.section__directivos table {
+  border-collapse: collapse;
+}
+
+.section__directivos table th,
+.section__directivos table td {
+  border: 1px solid var(--bg-gray-color);
+  text-align: left;
+  padding: 0.5em;
+}
+
+.section__directivos table tr:nth-child(even) {
+  background-color: var(--bg-gray-color);
+}
+
+
+.section__predio_container {
+    position: relative;  
+    text-align: justify;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.section__predio_img img {
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+@media only screen and (min-width: 576px) {
+    .section__predio_container {
+        display: grid;
+        grid-template-columns: 30vw 1fr;
+        gap: 1em;
+    }
+
+    .section__predio_img img {
+        width: 30vw;
+        height: 30vw;
+        margin-bottom: 0;
+    }
+}
+
+@media only screen and (min-width: 768px) { 
+    .section__asociacion {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5em;
+    }
+
+    .section__asociacion div:first-child{
+      margin-bottom: 0;
+    }
+
+    .section__predio_container {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 2em;
+    }
+
+    .section__predio_img img {
+        width: 200px;
+        height: 200px;
+    }
+}

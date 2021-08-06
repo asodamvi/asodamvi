@@ -1,0 +1,61 @@
+.section__documentos {
+    position: relative;
+    padding: 2em 1em;
+}
+
+.documento__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2em 1fr 2em;
+    gap: 1em;
+    align-items: center;
+    color: #23292e;
+    padding: 1em;
+    border-radius: 2px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid transparent;
+}
+
+.documento__item:hover {
+    border: 1px solid var(--bg-gray-dark-color);
+}
+
+.documento__item:not(:last-child) {
+    margin-bottom: 1em;
+}
+
+.documento__item_img {
+    position: relative;
+    display: block;
+    width: 2em;
+    height: 2em;
+    background-image: url(../img/pdf_logo.svg);
+    background-position: center center;
+    background-size: 100% 100%;
+}
+
+.documento__item_name{
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.documento__item_name h6 {
+    margin-bottom: 0;
+}
+
+.documento__item_btn a {
+    position: relative;
+    display: block;
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    line-height: 2em;
+    border-radius: 50%;
+    color: var(--font-color); 
+}
+
+.documento__item_btn a:hover {
+    background-color: var(--font-color);
+    color: var(--bg-light-color); 
+    box-shadow: 1px 1px 2px #585858;
+}

@@ -1,3 +1,5 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
-Disallow:
+User-Agent: *
+Disallow: 
+Allow: /www.asodamvi.com
+
+Sitemap: http://www.asodamvi.com/sitemap.xml

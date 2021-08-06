@@ -1,0 +1,108 @@
+.body__component {
+    position: relative;
+    flex: 1;
+}
+
+.encuestas__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+}
+
+.message__encuesta {
+    margin-top: 2em;
+}
+
+.encuesta {
+    position: relative;
+    padding: 1em;
+    background-color: #fff;
+    border-radius: .5em;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-color: lightsteelblue;
+    border-style: solid;
+}
+
+.encuesta__actions {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+    margin-top: 1em;
+}
+
+.encuesta__modal {
+    margin-bottom: 2em;
+}
+
+.encuesta__estado {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-top-right-radius: .5em;
+    background-color: #0496ff;
+    padding: .25em;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.encuesta__lista {
+    margin: 1em 0;
+}
+
+.encuesta:hover {
+    border-color: #0496ff;
+}
+
+.encuesta h3, .encuesta p {
+    margin-bottom: 1em;
+}
+
+.encuesta__footer {
+    border-top: 1px dashed gray;
+    padding-top: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.encuesta__date{
+    color: gray;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.encuesta__date_item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.encuesta__date_icon {
+    color: #0496ff;
+    margin-right: .25em;
+}
+
+.dot {
+    width: 5px;
+    height: 5px;
+    background-color: gray;
+    border-radius: 5px;
+    margin: 1em;
+}
+
+.opcion__header{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 2em;
+}
+
+.encuesta__pregunta{
+    margin-bottom: 4em;
+}
