@@ -8,12 +8,17 @@ import 'moment/locale/es'
 
 const EstadisticasEncuestas = (props) => {
     const [preguntasData, setPreguntasData] = useState([]);
+    const [encuestasRespondidas, setEncuestasRespondidas] = useState(0);
     const [loader, setLoader] = useState(true);
     const { encuesta } = props;
 
     useEffect(() => {
         async function fetchData() {
             try {
+                await firestore.collection("usuarios_encuestas").get().then((res) => {
+                    setEncuestasRespondidas(res.size);
+                });
+
                 let preguntasList = new Array();
                 let preguntas = new Array();
                 const preguntasRef = await firestore.collection("preguntas").where("encuesta", "==", encuesta.id).get();
@@ -51,12 +56,22 @@ const EstadisticasEncuestas = (props) => {
         }
     }, []);
 
-    const preguntaItem = (pregunta) => {
-       console.log(pregunta)
-    }
+    const preguntaItem = (pregunta, index) => {
+        console.log(pregunta);
 
-    const hola = () => {
-        console.log(preguntasData);
+        return (
+            <div key={index}>
+                <p>{index+1}. {pregunta.titulo}</p>
+                <div className="pregunta__opciones">
+                    {pregunta.opciones.map(opcion => (
+                        <div className="pregunta__opcion">
+                            <p>{opcion.titulo}</p>
+                            <span>{opcion.votos}</span  >
+                        </div>
+                    ))}
+                </div><br/>
+            </div>
+        )
     }
 
     return (
@@ -82,20 +97,22 @@ const EstadisticasEncuestas = (props) => {
                     </div>
                 </div>
 
-                <button onClick={hola}>
-                    Validar
-                </button>
-
                 {loader && <div className="loader"></div>}
 
                 { !loader && (
-                    <div className="encuesta__body">
-                        {
-                            React.Children.toArray(
-                                preguntasData.map((preguntaItem))
-                            )
-                        }
-                    </div>
+                    <>
+                        <div className="encuestas__respondidas">
+                            <h3>Encuestas Respondidas: </h3>
+                            <span>{encuestasRespondidas}</span>
+                        </div>
+                        <div className="encuesta__body">
+                            {
+                                React.Children.toArray(
+                                    preguntasData.map((pregunta, index) => preguntaItem(pregunta, index))
+                                )
+                            }
+                        </div>
+                    </>
                 )}
             </div>
         </div>
