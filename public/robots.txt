@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 User-Agent: *
 Disallow: 
 Allow: /www.asodamvi.com
 
 Sitemap: http://www.asodamvi.com/sitemap.xml
-=======
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
-Disallow:
->>>>>>> 91c24c784f010cdc7e203c5a8082d8a4f195404b
