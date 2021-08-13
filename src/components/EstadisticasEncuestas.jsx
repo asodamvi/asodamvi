@@ -42,7 +42,7 @@ const EstadisticasEncuestas = (props) => {
 
                 for(const pregunta of preguntasLista) {
                     let opciones = new Array();
-                    let opcionesRef = firestore.collection("opciones").where("pregunta", "==", pregunta.id);
+                    let opcionesRef = firestore.collection("opciones").where("pregunta", "==", pregunta.id).orderBy("create");
                     let opcionesData = await opcionesRef.get();
 
                     for(const opcion of opcionesData.docs) {
