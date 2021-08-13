@@ -7,41 +7,69 @@ import moment from 'moment';
 import 'moment/locale/es'
 
 const EstadisticasEncuestas = (props) => {
-    const [preguntasData, setPreguntasData] = useState([]);
     const [encuestasRespondidas, setEncuestasRespondidas] = useState(0);
+    const [preguntasList, setPreguntasList] = useState([]);
+    const [opcionesList, setOpcionesList] = useState([]);
+    const [opcionesVotos, setOpcionesVotos] = useState([]);
     const [loader, setLoader] = useState(true);
     const { encuesta } = props;
 
     useEffect(() => {
         async function fetchData() {
             try {
-                await firestore.collection("usuarios_encuestas").get().then((res) => {
-                    setEncuestasRespondidas(res.size);
-                });
+                // Obtener número de encuestas respondidas //
+                const usuariosEncuestas = firestore.collection("usuarios_encuestas").where("encuesta", "==", encuesta.id);
+                const snapshotEncuestas = await usuariosEncuestas.get();
+                const numeroEncuestas   = snapshotEncuestas.size;
+                setEncuestasRespondidas(numeroEncuestas);
+                //____________________________________________//
 
-                let preguntasList = new Array();
-                let preguntas = new Array();
-                const preguntasRef = await firestore.collection("preguntas").where("encuesta", "==", encuesta.id).get();
+                // Obtener preguntas de Encuesta //
+                const preguntasRef =  firestore.collection("preguntas").where("encuesta", "==", encuesta.id);
+                const preguntasData = await preguntasRef.get();
+                const preguntasLista = new Array()
 
-                preguntasRef.forEach(pregunta => {
-                    preguntasList.push({id: pregunta.id, ...pregunta.data()});
-                })
-
-                for (let index = 0; index < preguntasList.length; index++) {
-                    let opciones = new Array();
-                    await firestore.collection("opciones").where("pregunta", "==", preguntasList[index].id).get().then((opcionesData) => {
-                        opcionesData.forEach(async (opcion) => {
-                            const query = firestore.collection("respuestas").where("pregunta", "==", preguntasList[index].id).where("opcion", "==", opcion.id);
-                            const snapshot = await query.get();
-                            const count = snapshot.size;
-
-                            const object =  Object.create({ id: opcion.id, ...opcion.data(), votos: count })
-                            opciones.push(object)
-                        });
-                    });
-                    preguntas.push({ ...preguntasList[index], opciones: opciones });
+                for(const pregunta of preguntasData.docs) {
+                    preguntasLista.push({id: pregunta.id, ...pregunta.data()});
                 }
-                setPreguntasData(preguntas);
+
+                setPreguntasList(preguntasLista);
+                //____________________________________________//
+
+                // Obtener opciones de cada pregunta de la encuesta //
+                let opcionesPreguntas = new Array();
+                let opcionesId = new Array();
+
+                for(const pregunta of preguntasLista) {
+                    let opciones = new Array();
+                    let opcionesRef = firestore.collection("opciones").where("pregunta", "==", pregunta.id);
+                    let opcionesData = await opcionesRef.get();
+
+                    for(const opcion of opcionesData.docs) {
+                        opcionesId.push(opcion.id);
+                        opciones.push({id: opcion.id, ...opcion.data()});
+                    }
+
+                    opcionesPreguntas[pregunta.id] = opciones;
+                }
+
+                setOpcionesList(opcionesPreguntas);
+                //____________________________________________//
+
+                // Obtener votos de cada opción de las preguntas de la encuesta //
+                const opcionesVotos = new Array();
+
+                for(const opcion of opcionesId) {
+                    const query = firestore.collection("respuestas").where("opcion", "==", opcion);
+                    const snapshot = await query.get();
+                    const count = snapshot.size;
+
+                    opcionesVotos[opcion] = count;
+                }
+
+                setOpcionesVotos(opcionesVotos);
+                //____________________________________________//
+
                 setLoader(false);
             } catch (error) {
                 console.error("EstadisticasEncuestas - Error: ", error);
@@ -52,23 +80,24 @@ const EstadisticasEncuestas = (props) => {
 
         return () => {
             setLoader(true)
-            setPreguntasData([]);
+            setEncuestasRespondidas(0)
+            setPreguntasList([]);
         }
     }, []);
 
     const preguntaItem = (pregunta, index) => {
-        console.log(pregunta);
-
         return (
             <div key={index}>
                 <p>{index+1}. {pregunta.titulo}</p>
                 <div className="pregunta__opciones">
-                    {pregunta.opciones.map(opcion => (
-                        <div className="pregunta__opcion">
-                            <p>{opcion.titulo}</p>
-                            <span>{opcion.votos}</span  >
-                        </div>
-                    ))}
+                    {
+                        opcionesList[pregunta.id].map(opcion => (
+                            <div className="pregunta__opcion">
+                                <p>{opcion.titulo}</p>
+                                <span>{opcionesVotos[opcion.id]}</span  >
+                            </div>
+                        ))
+                    }
                 </div><br/>
             </div>
         )
@@ -108,7 +137,7 @@ const EstadisticasEncuestas = (props) => {
                         <div className="encuesta__body">
                             {
                                 React.Children.toArray(
-                                    preguntasData.map((pregunta, index) => preguntaItem(pregunta, index))
+                                    preguntasList?.map((pregunta, index) => preguntaItem(pregunta, index))
                                 )
                             }
                         </div>
