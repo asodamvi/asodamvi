@@ -153,6 +153,17 @@
     border-radius: 2em;
 }
 
+.input__link_form {
+    width: 100%;
+    position: relative;
+    display: flex;
+    gap: 2em;
+}
+
+.input__link_form .container__form_btn {
+    flex: 1;
+}
+
 .form__message{
     width: 100%;
     border: 1px solid goldenrod;

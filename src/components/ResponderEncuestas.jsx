@@ -57,7 +57,11 @@ const ResponderEncuestas = () => {
                     <div className="encuestas__container">
                         {
                             encuestas.map((encuesta, index) => (
-                                <div className="encuesta" key={index} onClick={() => modalEncuesta(index)}>
+                                <div className="encuesta" key={index} onClick={() => {
+                                    if(encuesta.estado !== "finalizada") {
+                                        return modalEncuesta(index);
+                                    }
+                                }}>
                                     <h3>{encuesta.titulo} <span className="estado__title">{encuesta.estado.toUpperCase()}</span></h3>
                                     <p>{encuesta.descripcion}</p>
 

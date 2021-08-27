@@ -111,20 +111,28 @@ const Encuestas = () => {
                                     </div>
 
                                     <div className="encuesta__actions">
-                                        <button className="header__component_btn" onClick={() => modalEncuesta(index)}>
-                                            <Visibility />
-                                            Ver
-                                        </button>
+                                        {
+                                            (encuesta.estado !== "finalizada") && (
+                                                <button className="header__component_btn" onClick={() => modalEncuesta(index)}>
+                                                    <Visibility />
+                                                    Ver
+                                                </button>
+                                            )
+                                        }
 
                                         <button className="header__component_btn" onClick={() => handleShowData(index)}>
                                             <BarChart />
                                             Resultados
                                         </button>
 
-                                        <button className="btn__delete_component" onClick={() => handleDeleteEncuesta(encuesta.id) }>
-                                            <DeleteForever />
-                                            Eliminar
-                                        </button>
+                                        {
+                                            (encuesta.estado !== "finalizada") && (
+                                                <button className="btn__delete_component" onClick={() => handleDeleteEncuesta(encuesta.id) }>
+                                                    <DeleteForever />
+                                                    Eliminar
+                                                </button>
+                                            )
+                                        }
                                     </div>
                                 </div>
                             ))

@@ -8,7 +8,7 @@ import Galery from '../components/Galery'
 import Modal from '../components/Modal'
 
 // Assets
-import Comunicado from '../assets/img/comunicado.jpg';
+import Aviso from '../assets/img/aviso-asociados.jpg';
 
 const Inicio = () => {
     const [showModal, setShowModal] = useState(true);
@@ -22,7 +22,7 @@ const Inicio = () => {
             {
                 showModal && (
                     <Modal showModal={setShowModal}>
-                        <img src={Comunicado}/>
+                        <img src={Aviso}/>
                     </Modal>
                 )
             }
