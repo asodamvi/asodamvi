@@ -13,20 +13,32 @@ const Directivos = () => (
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Hugo Alcides Fernández Mejía</td>
-                    <td>Presidente y R.L</td>
+                    <td>Socorro García Palechor</td>
+                    <td>Presidente y Representante Legal</td>
                 </tr>
                 <tr>
-                    <td>Reinaldo Muñoz</td>
+                    <td>Luis Antonio Vargas Mosquera</td>
                     <td>Vicepresidente</td>
                 </tr>
                 <tr>
-                    <td>Nancy Giron Bedoya</td>
+                    <td>Ana Edilia Zambrano</td>
                     <td>Tesorera</td>
                 </tr>
                 <tr>
-                    <td>Elcy Miryan Erazo Molina</td>
+                    <td>María Alexandra Cruz Narváez</td>
                     <td>Secretaria</td>
+                </tr>
+                <tr>
+                    <td>Blanca  Nubia Chaves</td>
+                    <td>Suplente</td>
+                </tr>
+                <tr>
+                    <td>Javier Noreña Narváez</td>
+                    <td>Suplente</td>
+                </tr>
+                <tr>
+                    <td>Hilda Melania Ortiz Montero</td>
+                    <td>Suplente</td>
                 </tr>
                 </tbody>
             </table>
