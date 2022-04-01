@@ -23,7 +23,7 @@ const Contact = () => (
               <div>
                 <h4 className="contacto__item_title"> Télefonos</h4>
                 <p>312 529 8438</p>
-                <p>304 630 9822</p>
+                <p>300 845 8745</p>
               </div>
             </li>
             <li>
