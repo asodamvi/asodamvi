@@ -7,16 +7,16 @@ import "../assets/css/carousel.css"
 
 const Carousel = () => {
     const content = [
-        "Conoce nuestro trabajo por las viviendas de más de 400 familias caucanas",
-        "Desde el año 2008 trabajamos con cientos de familias por una vivienda digna",
-        "Una vivienda donde se construyan sueños para todos"
+        "Asodamvi trabaja de la mano de cada asociado,",
+        "logrando su objetivo, construyendo futuro,",
+        "invirtiendo en el presente le damos inicio a la ejecución de nuestro proyecto urbanístico de nuestro lote."
     ]
 
     return(
         <div className="carousel">
             <div className="container carousel__container">
                 <div className="carousel__texto">
-                    <Slider autoplay={10000} previousButton="" nextButton="" className="center">
+                    <Slider autoplay={6000} previousButton="" nextButton="" className="center">
                         {content.map((item, index) => (
                             <div key={index}>
                                 <div className="center">

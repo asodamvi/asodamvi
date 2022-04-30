@@ -22,14 +22,16 @@ const Informacion = () => (
             <h3 className="title">Objetivos</h3>
             <div className="section__objetivos_container">
                 <div className="objetivos__item">
-                    Lograr que las autoridades investigaran y encontraran los responsables 
-                    de la estafa que sufrieron cientos de familias caucanas.
+                    Disminuir el grado de dificultad por parte de los asociados de ASODAMVI para formular, 
+                    gestionar y ejecutar Proyecto Urbanístico.
                 </div>
                 <div className="objetivos__item">
-                    Urbanizar el lote propiedad de la asociación para entregarselo a sus asociados
+                    Aumentar el compromiso de los integrantes de la asociación de vivienda para avanzar 
+                    en alcanzar el objetivo central.
                 </div>
                 <div className="objetivos__item">
-                    Gestionar y construir su propio proyecto de vivienda.
+                    Disminuir el grado de equivocaciones por parte de Directivos en procura de resolver 
+                    necesidades de interés común.
                 </div>
             </div>
         </div>
