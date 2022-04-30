@@ -70,7 +70,7 @@ const Header = () => {
                                         Contáctanos
                                     </a>
                                 </li>
-                                {
+                                {/* {
                                     currentUser ? (
                                     <li>
                                         <Link to="/dashboard" onClick={hideMenu} className="nav__menu_btn">
@@ -84,7 +84,7 @@ const Header = () => {
                                         </Link>
                                     </li>
                                     )
-                                }
+                                } */}
                             </ul>
                         </nav>
 
