@@ -24,10 +24,11 @@
     display: block;
     width: 100%;
     transition: transform 0.5s ease;
+    transform: scale(1.2);
 }
 
 .galery__item img:hover {
-    transform: scale(1.1);
+    transform: scale(1.3);
 }
 
 .galery__item_show {

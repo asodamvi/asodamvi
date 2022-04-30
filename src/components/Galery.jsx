@@ -5,34 +5,41 @@ import GaleryItemShow from './GaleryItemShow'
 // Styles
 import "../assets/css/galery.css"
 
+// Galery
+import Gallery1 from '../assets/gallery/gallery1.jpg'
+import Gallery2 from '../assets/gallery/gallery2.jpg' 
+import Gallery3 from '../assets/gallery/gallery3.jpg' 
+import Gallery4 from '../assets/gallery/gallery4.jpg' 
+import Gallery5 from '../assets/gallery/gallery5.jpg' 
+import Gallery6 from '../assets/gallery/gallery6.jpg' 
+import Gallery7 from '../assets/gallery/gallery7.jpg' 
+import Gallery8 from '../assets/gallery/gallery8.jpg' 
+
 // Data
 const data = [{
 	id: 1,
-	image: "https://image.jimcdn.com/app/cms/image/transf/none/path/s512bacf5cd2e8629/image/i9c09d7c49fa86825/version/1447768667/image.jpg"
+	image: Gallery1
 }, {
 	id: 2,
-	image: "https://image.jimcdn.com/app/cms/image/transf/none/path/s512bacf5cd2e8629/image/id071b876dffc1606/version/1447768667/image.jpg"
+	image: Gallery2
 }, {
 	id: 3,
-	image: "https://image.jimcdn.com/app/cms/image/transf/none/path/s512bacf5cd2e8629/image/i4670aa5b2e840dfe/version/1447768667/image.jpg"
+	image: Gallery3
 }, {
 	id: 4,
-	image: "https://image.jimcdn.com/app/cms/image/transf/none/path/s512bacf5cd2e8629/image/i3baa5313cc738509/version/1447768667/image.jpg"
+	image: Gallery4
 }, {
 	id: 5,
-	image: "https://image.jimcdn.com/app/cms/image/transf/none/path/s512bacf5cd2e8629/image/i7d3c0bc7586b9964/version/1447768667/image.jpg"
+	image: Gallery5
 }, {
 	id: 6,
-	image: "https://image.jimcdn.com/app/cms/image/transf/none/path/s512bacf5cd2e8629/image/i4ce4cb8b02eadea9/version/1447768667/image.jpg"
+	image: Gallery6
 }, {
 	id: 7,
-	image: "https://image.jimcdn.com/app/cms/image/transf/none/path/s512bacf5cd2e8629/image/ia8fd4e3e9823c288/version/1447768667/image.jpg"
+	image: Gallery7
 }, {
 	id: 8,
-	image: "https://image.jimcdn.com/app/cms/image/transf/none/path/s512bacf5cd2e8629/image/i24f20ad55ab920b8/version/1447768667/image.jpg"
-}, {
-    id: 9,
-    image: "https://image.jimcdn.com/app/cms/image/transf/none/path/s512bacf5cd2e8629/image/i88eb5fc4fa37ef88/version/1447768667/image.jpg"
+	image: Gallery8
 }]
 
 class Galery extends React.Component {
